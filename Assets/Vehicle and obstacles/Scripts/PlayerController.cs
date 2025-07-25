@@ -4,10 +4,11 @@ public class PlayerController : MonoBehaviour
 {
     private readonly string Horizontal = "Horizontal";
     private readonly string Vertical = "Vertical";
-    [SerializeField] private float speed = 20f;
-    [SerializeField] private float turnSpeed = 3f;
     private float horizontalInput;
     private float verticalInput;
+    [SerializeField] private float speed = 20f;
+    [SerializeField] private float turnSpeed = 3f;
+
     void Update()
     {
         horizontalInput = Input.GetAxis(Horizontal);
