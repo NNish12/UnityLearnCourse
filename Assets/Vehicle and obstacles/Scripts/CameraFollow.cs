@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -8,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
     private Vector3 nearOffset;
     private Vector3 tempOffset;
+    [SerializeField] private float speedCameraRotate = 15f;
     private void Start()
     {
         currentView = player1;
@@ -26,6 +28,8 @@ public class CameraFollow : MonoBehaviour
             ChangeCameraVeiw();
         }
         transform.position = currentView.transform.position + tempOffset;
+        transform.RotateAround(currentView.transform.position, Vector3.up, currentView.GetHorizontalInput() * Time.deltaTime * speedCameraRotate);
+
     }
     private void ChangeCameraVeiw()
     {
@@ -56,4 +60,5 @@ public class CameraFollow : MonoBehaviour
         inactivePlayer.enabled = false;
         currentView = activePlayer;
     }
+
 }

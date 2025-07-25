@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 20f;
     [SerializeField] private float turnSpeed = 3f;
 
-    void Update()
+    private void Update()
     {
         horizontalInput = Input.GetAxis(Horizontal);
         verticalInput = Input.GetAxis(Vertical);
         transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
     }
+    public float GetHorizontalInput() => horizontalInput;
+
 }
