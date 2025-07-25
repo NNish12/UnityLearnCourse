@@ -1,17 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 cameraTransform;
+    public PlayerController player1;
+    public PlayerController player2;
+    private PlayerController currentView;
+    private Vector3 offset;
     private void Start()
     {
-        cameraTransform = transform.position;
+        currentView = player1;
+        offset = transform.position;
+
     }
     void LateUpdate()
     {
-        transform.position = player.transform.position + cameraTransform;
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            ChangeVehicle();
+        }
+        transform.position = currentView.transform.position + offset;
+    }
+    private void ChangeVehicle()
+    {
+        if (currentView == player1)
+        {
+            SetActivePlayer(player2, player1);
+        }
+        else
+        {
+            SetActivePlayer(player1, player2);
+        }
+
+    }
+    private void SetActivePlayer(PlayerController activePlayer, PlayerController inactivePlayer)
+    {
+        activePlayer.enabled = true;
+        inactivePlayer.enabled = false;
+        currentView = activePlayer;
     }
 }
