@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class DetectCollisions : MonoBehaviour
+public class DodsCollisions : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null && other.tag != "Player")
+        if (other.tag == "Player")
         {
+            GameManager.DecreaseLives();
             Destroy(gameObject);
         }
     }

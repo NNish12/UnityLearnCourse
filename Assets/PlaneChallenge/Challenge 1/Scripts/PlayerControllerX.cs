@@ -2,13 +2,9 @@
 
 public class PlayerControllerX : MonoBehaviour
 {
-    private readonly string Horizontal = "Horizontal";
-    private readonly string Vertical = "Vertical";
-    private float horizontalInput;
-    private float verticalInput;
+    private readonly string Vertical = "Vertical"; private float verticalInput;
     [SerializeField] private float speed = 20f;
     [SerializeField] private float rotationSpeed = 3f;
-
 
     // Update is called once per frame
     void LateUpdate()
