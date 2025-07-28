@@ -4,21 +4,27 @@ public class Cube : MonoBehaviour
 {
     [Header("References")]
     public MeshRenderer Renderer;
-    [Header("Position")]
-    [SerializeField][Range(-20, 20)] private float xPos;
-    [SerializeField][Range(-20, 20)] private float yPos;
-    [SerializeField][Range(-20, 20)] private float zPos;
-    [Header("Speed")]
-    public float speedRotation = 5f;
-    public float speedRanbow = 1f;
+    [SerializeField] private float speedRotation = 5f;
+    [SerializeField] private float speedRainbow = 1f;
     [Header("General settings")]
     [Range(0, 1)] public float alpha;
 
     private float time;
-
-    void Update()
+    public float SpeedRotation
     {
-        transform.position = new Vector3(xPos, yPos, zPos);
+        get => speedRotation;
+        set
+        {
+            speedRotation = value;
+        }
+    }
+    public float SpeedRainbow
+    {
+        get => speedRainbow;
+        set
+        {
+            speedRainbow = value;
+        }
     }
     public void RainbowColor()
     {
@@ -26,7 +32,7 @@ public class Cube : MonoBehaviour
             if (Renderer == null) return;
 
             Material material = Renderer.material;
-            time += Time.deltaTime * speedRanbow;
+            time += Time.deltaTime * speedRainbow;
             float r = Mathf.Sin(time) * 0.5f + 0.5f;
             float g = Mathf.Sin(time + 2f) * 0.5f + 0.5f;
             float b = Mathf.Sin(time + 4f) * 0.5f + 0.5f;
@@ -44,7 +50,6 @@ public class Cube : MonoBehaviour
     }
     public void SetScale(float scale)
     {
-        // this.scale = scale;
         transform.localScale = Vector3.one * scale;
     }
     public void SetSimpleColor(Color setColor)

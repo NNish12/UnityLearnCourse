@@ -20,12 +20,15 @@ public class UIManager : MonoBehaviour
     private bool onRotation = true;
     private List<string> namesOptions = new List<string> { "Rainbow", "Black", "White", "Blue", "Red", "Green", "Yellow" };
 
+
+    private Color[] simpleColors = new Color[] { Color.black, Color.white, Color.blue, Color.red, Color.green, Color.yellow };
+
     private void Start()
     {
         SetListeners();
 
         colorList.ClearOptions();
-        SetNamesDropdown();
+        colorList.AddOptions(namesOptions);
     }
 
     private void SetListeners()
@@ -52,6 +55,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetRainbowState(bool isOn)
     {
+        if (onRainbow == isOn) return;
         toggleRainbow.isOn = isOn;
         onRainbow = isOn;
         if (isOn == true)
@@ -63,11 +67,11 @@ public class UIManager : MonoBehaviour
     }
     public void SetRainbowSpeed(float speed)
     {
-        cube.speedRanbow = speed;
+        cube.SpeedRainbow = speed;
     }
     public void SetRotationSpeed(float speed)
     {
-        cube.speedRotation = speed;
+        cube.SpeedRotation = speed;
     }
     public void SetIsRotation(bool isOn)
     {
@@ -79,41 +83,13 @@ public class UIManager : MonoBehaviour
     }
     public void SetColor(int index)
     {
-        switch (index)
+        if (index == 0)
         {
-            case 0:
-                SetRainbowState(true);
-                break;
-            case 1:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.black);
-                break;
-            case 2:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.white);
-                break;
-            case 3:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.blue);
-                break;
-            case 4:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.red);
-                break;
-            case 5:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.green);
-                break;
-            case 6:
-                SetRainbowState(false);
-                cube.SetSimpleColor(Color.yellow);
-                break;
+            SetRainbowState(true);
+            return;
         }
-
-    }
-    private void SetNamesDropdown()
-    {
-        colorList.AddOptions(namesOptions);
+        SetRainbowState(false);
+        cube.SetSimpleColor(simpleColors[index - 1]);
     }
     private void SetTransparent(float transparent)
     {
