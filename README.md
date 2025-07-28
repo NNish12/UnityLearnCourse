@@ -14,7 +14,7 @@ According to the second additional task, the project was published on Unity Play
 
 
 ## HungryAnimals (Unit 2.1)
-This is a basic top-down movement prototype created in Unity as part of a Unit 1 task. The character can move along the X and Y axes, with boundaries preventing them from leaving the defined area.
+This is a basic top-down movement prototype created in Unity as part of a Unit 2 task. The character can move along the X and Y axes, with boundaries preventing them from leaving the defined area.
 
 As part of the second additional task, the prototype was extended with animal spawning within movement limits, a hunger bar using a UI Slider in World Space, and simple console logging of score and lives.
 
