@@ -50,11 +50,15 @@ public class Cube : MonoBehaviour
     public void SetSimpleColor(Color setColor)
     {
         Material material = Renderer.material;
-        Color color = setColor;
-        material.color = color;
+        Color newColor = new Color(setColor.r, setColor.g, setColor.b, alpha);
+        material.color = newColor;
     }
     public void SetTransparent(float transparent)
     {
-
+        alpha = transparent;
+        Color oldColor = Renderer.material.color;
+        Color color = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
+        Renderer.material.color = color;
     }
 }
+

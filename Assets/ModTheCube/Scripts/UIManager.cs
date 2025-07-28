@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
         {
             cube.RainbowColor();
         }
+
         if (onRotation)
         {
             cube.CubeRotation();
@@ -51,7 +52,14 @@ public class UIManager : MonoBehaviour
     }
     public void SetRainbowState(bool isOn)
     {
+        toggleRainbow.isOn = isOn;
         onRainbow = isOn;
+        if (isOn == true)
+        {
+            cube.RainbowColor();
+            if (colorList.value != 0)
+                colorList.value = 0;
+        }
     }
     public void SetRainbowSpeed(float speed)
     {
@@ -75,7 +83,6 @@ public class UIManager : MonoBehaviour
         {
             case 0:
                 SetRainbowState(true);
-                toggleRainbow.isOn = true;
                 break;
             case 1:
                 SetRainbowState(false);
@@ -110,6 +117,6 @@ public class UIManager : MonoBehaviour
     }
     private void SetTransparent(float transparent)
     {
-        cube.alpha = transparent;
+        cube.SetTransparent(transparent);
     }
 }
